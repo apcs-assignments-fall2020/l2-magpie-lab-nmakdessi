@@ -33,14 +33,41 @@ public class Magpie
         String response = "";
         if (statement.indexOf("no") >= 0)
         {
-            response = "Why so negative?";
+            response = "How about yes?";
         }
         else if (statement.indexOf("mother") >= 0
-                || statement.indexOf("father") >= 0
-                || statement.indexOf("sister") >= 0
-                || statement.indexOf("brother") >= 0)
+                || statement.indexOf("sister") >= 0)
         {
             response = "Tell me more about your family.";
+        }
+        else if (statement.indexOf("father") >= 0)
+        {
+            statement = "What is your dad's name?";
+        }
+        else if (statement.indexOf("brother") >= 0)
+        {
+            response = "I have a brother too!";
+        }
+        else if (statement.indexOf("dog") >= 0
+                || statement.indexOf("cat") >= 0)
+        {
+            response = "Tell me more about your pets.";
+        }
+        else if (statement.indexOf("Nathan") >= 0)
+        {
+            response = "He seems like a good teacher.";
+        }
+        else if (statement.indexOf("run") >= 0)
+        {
+            response = "I like to run also!";
+        }
+        else if (statement.indexOf("phone") >= 0)
+        {
+            response = "What phone do you have?";
+        }
+        else if (statement.trim().length() == 0)
+        {
+            response = "Say something, please.";
         }
         else
         {
