@@ -117,7 +117,39 @@ public class Magpie
     // The method returns the index of the first character in word
     // if it is found, and returns -1 otherwise. 
     public int findWord(String str, String word) {
+        str = str.toLowerCase();
+        word = word.toLowerCase();
+    
+       if (str.length() < word.length())
+       {
         return -1;
+        }
+       else if (str.length() == word.length())
+       {
+        return str.indexOf(word);
+        }
+        else
+        {
+        // str starts with word
+        if (str.indexOf(word + " ") == 0)
+        {
+            return 0;
+        }
+        // str ends with word
+        else if (str.indexOf(" " + word) == str.length() - word.length() - 1)
+        {
+            return str.indexOf(" " + word) + 1;
+        }
+        // str has word in the middle
+        else if (str.indexOf(" " + word + " ") >= 0)
+            {
+            return str.indexOf(" " + word + " ") + 1;
+            }
+        else
+            {
+            return -1;
+            }
+        }
     }
 
     
