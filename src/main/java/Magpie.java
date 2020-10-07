@@ -133,7 +133,6 @@ public class Magpie
         // str starts with word
         if (str.indexOf(word + " ") == 0)
         {
-            return 0;
         }
         // str ends with word
         else if (str.indexOf(" " + word) == str.length() - word.length() - 1)
