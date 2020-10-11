@@ -120,35 +120,7 @@ public class Magpie
         str = str.toLowerCase();
         word = word.toLowerCase();
     
-       if (str.length() < word.length())
-       {
-        return -1;
-        }
-       else if (str.length() == word.length())
-       {
         return str.indexOf(word);
-        }
-        else
-        {
-        // str starts with word
-        if (str.indexOf(word + " ") == 0)
-        {
-        }
-        // str ends with word
-        else if (str.indexOf(" " + word) == str.length() - word.length() - 1)
-        {
-            return str.indexOf(" " + word) + 1;
-        }
-        // str has word in the middle
-        else if (str.indexOf(" " + word + " ") >= 0)
-            {
-            return str.indexOf(" " + word + " ") + 1;
-            }
-        else
-            {
-            return -1;
-            }
-        }
     }
 
     
@@ -162,8 +134,15 @@ public class Magpie
      */
     public String transformIWantStatement(String statement)
     {
-        //your code here
-        return "";
+        statement = statement.trim();
+        String a = statement.substring(statement.length() - 1);
+        if (a.equals(".")){
+            statement = statement.substring(statement.length() - 1);
+        }
+        int b = findWord(statement, "I want");
+        String c = statement.substring(b + 7);
+        return ("Would you really be happy if you had " + c + "?");
+
     }
 
     /**
@@ -174,8 +153,8 @@ public class Magpie
      */
     public String transformIYouStatement(String statement)
     {
-        //your code here
-        return "";
+        String a = statement.substring(findWord(statement, "i" ) + 2, findWord(statement, "you") -1 );
+        return ("Why do you " + a + " me?");
     }
 
     /**
@@ -186,8 +165,14 @@ public class Magpie
      */
     public String transformIWantToStatement(String statement)
     {
-        // your code here
-        return "";
+        statement = statement.trim();
+        String a = statement.substring(statement.length() - 1);
+        if (a.equals(".")){
+            statement = statement.substring(statement.length() - 1);
+        }
+        int b = findWord(statement, "I want to");
+        String c = statement.substring(b + 9).trim();
+        return ("What would it mean to " + c + "?");
     }
 
 
@@ -201,7 +186,7 @@ public class Magpie
      */
     public String transformYouMeStatement(String statement)
     {
-        // your code here
-        return "";
+        String a = statement.substring(findWord(statement, "you") + 3, findWord(statement, "me") -1);
+        return ("What makes you think that I" + a +" you?");
     }
 }
